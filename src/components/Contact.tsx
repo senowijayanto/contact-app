@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 
 type Props = {
     name: string;
@@ -7,6 +7,12 @@ type Props = {
 
 const Contact: React.FC<Props> = ({ name, phone }) => {
     const [isPhoneCensored, setIsPhoneCensored] = useState(false);
+
+    useEffect(() => {
+        if (isPhoneCensored) {
+            alert(`${name}'s phone number is censored!`);
+        }
+    }, [isPhoneCensored]);
 
     return (
         <div
